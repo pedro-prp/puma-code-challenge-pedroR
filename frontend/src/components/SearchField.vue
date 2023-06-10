@@ -1,29 +1,25 @@
 <template>
-  <div>
-    <input
-      type="text"
-      v-model="searchQuery"
-      @input="onInput"
-      placeholder="Digite o nome do usuário..."
-    />
-  </div>
+    <div>
+        <input type="text" v-model="searchQuery" @keyup.enter="onInput" placeholder="Digite o nome do usuário..." />
+    </div>
 </template>
-
+  
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 export default {
-  setup() {
-    const searchQuery = ref('')
+    setup(props, { emit }) {
+        const searchQuery = ref('');
 
-    const onInput = () => {
-      this.$emit('input', searchQuery.value)
-    }
+        const onInput = () => {
+            emit('search', searchQuery.value);
+        }
 
-    return {
-      searchQuery,
-      onInput
+        return {
+            searchQuery,
+            onInput
+        };
     }
-  }
 }
 </script>
+  
