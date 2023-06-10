@@ -1,38 +1,55 @@
 <template>
-  <div>
-    <h1>Busca por Usuário</h1>
-    <SearchField @search="fetchUser" />
-    <UserCard v-if="user" :user="user" />
+  <div class="app">
+    <h1>Meus Usuários Favoritos do GitHub</h1>
+    <SearchBar @add-user="addUser" />
+    <UserList :users="favoriteUsers" @delete="deleteUser" @toggle-favorite="toggleFavorite" />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
-import axios from 'axios';
-import SearchField from './components/searchField.vue';
-import UserCard from './components/userCard.vue'
+import SearchBar from './components/SearchBar.vue';
+import UserList from './components/UserList.vue';
 
 export default {
   components: {
-    SearchField,
-    UserCard
+    SearchBar,
+    UserList
   },
   setup() {
-    const user = ref(null);
+    const favoriteUsers = ref([]);
 
-    const fetchUser = async (username) => {
-      try {
-        const response = await axios.get(`https://api.github.com/users/${username}`);
-        user.value = response.data;
-      } catch (error) {
-        console.error('Erro ao buscar o usuário:', error);
-      }
+    const addUser = (user) => {
+      favoriteUsers.value.push(user);
+    };
+
+    const deleteUser = (user) => {
+      favoriteUsers.value = favoriteUsers.value.filter((u) => u.id !== user.id);
+    };
+
+    const toggleFavorite = (user) => {
+      user.favorite = !user.favorite;
     };
 
     return {
-      user,
-      fetchUser
+      favoriteUsers,
+      addUser,
+      deleteUser,
+      toggleFavorite
     };
   }
 }
 </script>
+
+<style scoped>
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h1 {
+  margin-top: 0;
+}
+</style>

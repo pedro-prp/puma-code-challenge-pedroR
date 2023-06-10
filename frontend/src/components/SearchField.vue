@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <header class="nav">
         <input type="text" v-model="searchQuery" @keyup.enter="onInput" placeholder="Digite o nome do usuário..." />
-    </div>
+    </header>
 </template>
   
 <script>
@@ -22,4 +22,9 @@ export default {
     }
 }
 </script>
-  
+<style scoped>
+.nav {
+    background-color: #fff;
+
+}
+</style>

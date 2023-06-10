@@ -1,8 +1,16 @@
 <template>
     <div class="user-card">
-        <img :src="user.avatar_url" alt="User avatar" class="user-avatar">
-        <h2 class="user-name">{{ user.login }}</h2>
-        <a :href="user.html_url" target="_blank" rel="noopener noreferrer" class="user-url">View Profile</a>
+        <img :src="user.avatar_url" :alt="user.name" />
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.login }}</p>
+        <div class="buttons">
+            <a :href="user.html_url" target="_blank">Ver perfil</a>
+            <button @click="deleteUser">Excluir</button>
+            <button @click="toggleFavorite">
+                <i :class="['fas', isFavorite ? 'fa-star' : 'far fa-star']"></i>
+
+            </button>
+        </div>
     </div>
 </template>
   
@@ -12,6 +20,18 @@ export default {
         user: {
             type: Object,
             required: true
+        },
+        isFavorite: {
+            type: Boolean,
+            required: true
+        }
+    },
+    methods: {
+        deleteUser() {
+            this.$emit('delete', this.user);
+        },
+        toggleFavorite() {
+            this.$emit('toggle-favorite', this.user);
         }
     }
 }
@@ -22,32 +42,49 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 200px;
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.user-avatar {
-    width: 80px;
-    height: 80px;
+.user-card img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+}
+
+.user-card h3 {
+    margin-top: 10px;
+}
+
+.user-card p {
     margin-bottom: 10px;
 }
 
-.user-name {
-    font-size: 18px;
-    margin-bottom: 10px;
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.user-url {
+.buttons a,
+.buttons button {
+    padding: 5px 10px;
+    border-radius: 3px;
     text-decoration: none;
-    color: #0366d6;
-    font-size: 14px;
+    color: #fff;
+}
+
+.buttons a {
+    background-color: #007bff;
+}
+
+.buttons button {
+    background-color: #dc3545;
+}
+
+.fa-star {
+    color: #ffc107;
 }
 </style>
   
