@@ -24,10 +24,15 @@ const create = (request, response) => {
         )
     }
 
+    let alreadyExists = false
+
     if (users.length != 0) {
 
         users.forEach(element => {
-            if (element.name == data.username) {
+            if (element.id === data.id) {
+
+                alreadyExists = true
+
                 return response.status(400).json(
                     {
                         "error": `O usuário: ${data.username} já existe. Não é possível inserir`
@@ -37,10 +42,11 @@ const create = (request, response) => {
         });
     }
 
+    if (alreadyExists == false) {
+        favoriteRepository.insertOne(data)
 
-    favoriteRepository.insertOne(data)
-
-    return response.status(201).json("created")
+        return response.status(201).json("created")
+    }
 }
 
 const deleteOne = (request, response) => {
