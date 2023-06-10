@@ -18,7 +18,7 @@ const create = (request, response) => {
     if (users.length == 5) {
         return response.status(400).json(
             {
-                "error": `O limite de usuários favoritos é 5. Não foi possível inserir o usuário: ${data.user}`
+                "error": `O limite de usuários favoritos é 5. Não foi possível inserir o usuário: ${data.username}`
             }
         )
     }
@@ -26,10 +26,10 @@ const create = (request, response) => {
     if (users.length != 0) {
 
         users.forEach(element => {
-            if (element.name == data.name) {
+            if (element.name == data.username) {
                 return response.status(400).json(
                     {
-                        "error": `O usuário: ${data.user} já existe. Não é possível inserir`
+                        "error": `O usuário: ${data.username} já existe. Não é possível inserir`
                     }
                 )
             }
@@ -42,7 +42,32 @@ const create = (request, response) => {
     return response.status(201).json("created")
 }
 
+const deleteOne = (request, response) => {
+    const username = request.params.username
+
+    const users = favoriteRepository.findAll()
+
+    users.forEach((user, index) => {
+        if (user.username == username) {
+            favoriteRepository.deleteOne(index)
+
+            return response.status(200).json(
+                {
+                    "msg": `Usuário ${username} deletado com sucesso`
+                }
+            )
+        }
+    })
+
+    return response.status(400).json(
+        {
+            "error": `Usuário: ${username} não encontrado`
+        }
+    )
+}
+
 module.exports = {
     index,
-    create
+    create,
+    deleteOne
 }
