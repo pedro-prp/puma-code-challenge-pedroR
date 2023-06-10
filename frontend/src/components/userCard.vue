@@ -1,8 +1,11 @@
 <template>
     <div class="user-card">
-        <img :src="user.avatar_url" :alt="user.name" />
-        <h3>{{ user.name }}</h3>
-        <p>{{ user.login }}</p>
+        <div class="card-info">
+            <img :src="user.avatar_url" :alt="user.name" />
+            <h3>{{ user.name }}</h3>
+            <p>{{ user.username }}</p>
+        </div>
+
         <div class="buttons">
             <a :href="user.html_url" target="_blank">Ver perfil</a>
             <button @click="deleteUser">Excluir</button>
@@ -48,27 +51,37 @@ export default {
     align-items: center;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 25px;
+    background-color: #ACB1D6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.user-card img {
+.card-info {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.card-info img {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
-.user-card h3 {
+.card-info h3 {
     margin-top: 10px;
 }
 
-.user-card p {
+.card-info p {
     margin-bottom: 10px;
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     width: 100%;
+    padding-bottom: 10px;
 }
 
 .buttons a,
