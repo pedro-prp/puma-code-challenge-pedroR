@@ -65,6 +65,23 @@ export default {
 </script>
   
 <style scoped>
+input {
+    border-radius: 5px;
+    height: 20px;
+    width: 180px;
+    border: solid #FFA559;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:hover {
+    border: solid #454545;
+}
+
 .search-bar {
     display: flex;
     align-items: center;

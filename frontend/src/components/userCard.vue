@@ -7,8 +7,10 @@
         </div>
 
         <div class="buttons">
-            <a :href="user.html_url" target="_blank">Ver perfil</a>
-            <button @click="deleteUser">Excluir</button>
+            <a :href="user.html_url" id="profile-button" target="_blank">
+                <button>Perfil</button>
+            </a>
+            <button id="delete-button" @click="deleteUser">Excluir</button>
             <button id="favorite-button" @click="toggleFavorite">Favoritar</button>
         </div>
     </div>
@@ -86,25 +88,53 @@ export default {
     padding-bottom: 10px;
 }
 
-.buttons a,
+
 .buttons button {
-    padding: 5px 10px;
-    border-radius: 3px;
+    inline-size: auto;
+    height: 30px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
     text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    background: #454545;
+    border: none;
     color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-shadow: -2px 4px 16px #454545;
 }
 
-.buttons a {
-    background-color: #007bff;
+#profile-button button {
+    box-shadow: -2px 4px 16px #454545;
+    background: #454545;
 }
 
-.buttons button {
-    background-color: #dc3545;
+#profile-button button:hover {
+    background: #fff;
+    color: #454545;
+}
+
+#delete-button {
+    background: #B70404;
+    box-shadow: -2px 4px 16px #B70404;
+}
+
+#delete-button:hover {
+    background: #fff;
+    color: #B70404;
 }
 
 #favorite-button {
-    background-color: #ffc107;
-    color: black;
+    background: #FFE569;
+    box-shadow: -2px 4px 16px #FFE569;
+}
+
+#favorite-button:hover {
+    color: #FFE569;
+    background: #fff;
 }
 </style>
   
