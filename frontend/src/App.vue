@@ -1,6 +1,7 @@
 <template>
   <div class="app">
-    <h1>Meus Usuários Favoritos do GitHub</h1>
+    <h1>Favoritos do Github</h1>
+    <h2>Puma Code Challenge</h2>
     <SearchBar @add-user="addUser" />
     <UserList :users="favoriteUsers" @delete="deleteUser" @toggle-favorite="toggleFavorite" />
   </div>
@@ -49,7 +50,19 @@ export default {
   margin-top: 20px;
 }
 
+.search-bar {
+  padding-top: 50px;
+}
+
 h1 {
   margin-top: 0;
+  font-size: 70px;
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+  padding-bottom: 20px;
 }
 </style>

@@ -30,8 +30,7 @@ export default {
             this.$emit('toggle-favorite', user);
         },
         isFavorite(user) {
-            // Implemente a lógica para verificar se o usuário é favorito ou não
-            // Você pode usar uma propriedade "favorites" ou um método computado para isso
+
         },
         sortUsers() {
             this.users.sort((a, b) => a.name.localeCompare(b.name));
