@@ -1,47 +1,40 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div>
+    <h1>Busca por Usuário</h1>
+    <SearchField @input="fetchUser" />
+    <div v-if="user">
+      <h2>{{ user.login }}</h2>
+      <p>{{ user.url }}</p>
+      <img :src="user.avatar_url" alt="User avatar" />
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import { ref } from 'vue'
+import axios from 'axios'
+import SearchField from './components/searchField.vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default {
+  components: {
+    SearchField
+  },
+  setup() {
+    const user = ref(null)
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    const fetchUser = async (username) => {
+      try {
+        const response = await axios.get(`https://api.github.com/users/${username}`)
+        user.value = response.data
+      } catch (error) {
+        console.error('Erro ao buscar o usuário:', error)
+      }
+    }
+
+    return {
+      user,
+      fetchUser
+    }
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
-</style>
+</script>
