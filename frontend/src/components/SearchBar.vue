@@ -63,7 +63,7 @@ export default {
                 .catch(error => {
                     if (error.response && error.response.status === 400) {
                         this.closeModal();
-                        alert('Usuário já foi inserido anteriormente');
+                        alert(error.response.data.error);
                     } else {
                         console.error('Erro ao confirmar o usuário:', error);
                     }

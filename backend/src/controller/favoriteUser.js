@@ -19,7 +19,7 @@ const create = (request, response) => {
     if (users.length == 5) {
         return response.status(400).json(
             {
-                "error": `O limite de usuários é 5. Não foi possível inserir o usuário: ${data.username}`
+                "error": `O limite de usuários é cinco. Não foi possível inserir o usuário: ${data.username}`
             }
         )
     }
