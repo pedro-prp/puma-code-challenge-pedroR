@@ -30,6 +30,7 @@ export default {
             user.favorite = !user.favorite;
         },
         isFavorite(user) {
+            return user.favorite
         },
         sortUsers() {
             this.users.sort((a, b) => a.name.localeCompare(b.name));

@@ -6,10 +6,7 @@
         <div class="buttons">
             <a :href="user.html_url" target="_blank">Ver perfil</a>
             <button @click="deleteUser">Excluir</button>
-            <button @click="toggleFavorite">
-                <i :class="['fas', isFavorite ? 'fa-star' : 'far fa-star']"></i>
-
-            </button>
+            <button id="favorite-button" @click="toggleFavorite">Favoritar</button>
         </div>
     </div>
 </template>
@@ -30,10 +27,15 @@ export default {
     },
     methods: {
         deleteUser() {
-            this.$emit('delete', this.user);
+            axios.delete(`http://localhost:3333/users/${this.user.username}`)
+            window.location.reload()
         },
         toggleFavorite() {
-            this.$emit('toggle-favorite', this.user);
+            if (this.user.isFavorite) {
+                axios.patch(`http://localhost:3333/users/${this.user.username}/toogle-star/`)
+
+            }
+
         }
     }
 }
@@ -85,8 +87,9 @@ export default {
     background-color: #dc3545;
 }
 
-.fa-star {
-    color: #ffc107;
+#favorite-button {
+    background-color: #ffc107;
+    color: black;
 }
 </style>
   
