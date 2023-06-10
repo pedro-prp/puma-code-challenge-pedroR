@@ -1,4 +1,7 @@
-const db = []
+const db = {
+    "favorite_user": "",
+    "users": []
+}
 
 
 
@@ -7,15 +10,28 @@ const findAll = () => {
 }
 
 const insertOne = (data) => {
-    db.push(data)
+    db.users.push(data)
 }
 
 const deleteOne = (index) => {
-    db.splice(index, 1)
+    db.users.splice(index, 1)
 }
+
+const makeFavorite = (user) => {
+    if (db.favorite_user == user) {
+        db.favorite_user = ""
+        return false
+    } else {
+        db.favorite_user = user
+        return true
+    }
+
+}
+
 
 module.exports = {
     findAll,
     insertOne,
-    deleteOne
+    deleteOne,
+    makeFavorite
 }

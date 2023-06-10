@@ -1,5 +1,6 @@
 const { Request, Response } = require('express')
 const favoriteRepository = require('../repository/favoriteUser')
+const { request, response } = require('../app')
 
 
 const index = (request, response) => {
@@ -11,14 +12,14 @@ const index = (request, response) => {
 }
 
 const create = (request, response) => {
-    const users = favoriteRepository.findAll()
+    const { users } = favoriteRepository.findAll()
 
     const data = request.body
 
     if (users.length == 5) {
         return response.status(400).json(
             {
-                "error": `O limite de usuários favoritos é 5. Não foi possível inserir o usuário: ${data.username}`
+                "error": `O limite de usuários é 5. Não foi possível inserir o usuário: ${data.username}`
             }
         )
     }
@@ -45,7 +46,7 @@ const create = (request, response) => {
 const deleteOne = (request, response) => {
     const username = request.params.username
 
-    const users = favoriteRepository.findAll()
+    const { users } = favoriteRepository.findAll()
 
     users.forEach((user, index) => {
         if (user.username == username) {
@@ -66,8 +67,23 @@ const deleteOne = (request, response) => {
     )
 }
 
+const toogleFavorite = (request, response) => {
+    const username = request.params.username
+
+    if (favoriteRepository.makeFavorite(username)) {
+        return response.status(200).json(
+            { "msg": `O usuário ${username} agora é o favorito` }
+        )
+    } else {
+        return response.status(200).json(
+            { "msg": `O usuário ${username} não é mais o favorito` }
+        )
+    }
+}
+
 module.exports = {
     index,
     create,
-    deleteOne
+    deleteOne,
+    toogleFavorite
 }
