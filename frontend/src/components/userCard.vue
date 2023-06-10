@@ -1,5 +1,5 @@
 <template>
-    <div class="user-card">
+    <div class="user-card" :class="{ 'favorite-user': isFavorite }">
         <div class="card-info">
             <img :src="user.avatar_url" :alt="user.name" />
             <h3>{{ user.name }}</h3>
@@ -28,7 +28,7 @@ export default {
         isFavorite: {
             type: Boolean,
             required: true
-        }
+        },
     },
     methods: {
         deleteUser() {
@@ -36,12 +36,9 @@ export default {
             window.location.reload()
         },
         toggleFavorite() {
-            if (this.user.isFavorite) {
-                axios.patch(`http://localhost:3333/users/${this.user.username}/toogle-star/`)
-
-            }
-
-        }
+            axios.patch(`http://localhost:3333/users/${this.user.username}/toogle-star/`)
+            window.location.reload()
+        },
     }
 }
 </script>
@@ -55,6 +52,10 @@ export default {
     border-radius: 10px;
     background-color: #a38191;
 
+}
+
+.user-card.is-favorite {
+    background-color: yellow;
 }
 
 .card-info {
@@ -131,6 +132,10 @@ export default {
 #favorite-button:hover {
     color: #FFE569;
     background: #fff;
+}
+
+.favorite-user {
+    background-color: #EAC435;
 }
 </style>
   

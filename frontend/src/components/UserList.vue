@@ -2,7 +2,7 @@
     <div class="user-list">
         <button @click="sortUsers"><img src="../assets/images/order.png" alt=""></button>
         <div v-if="users.length > 0" class="grid">
-            <UserCard v-for="user in users" :key="user.id" :user="user" :is-favorite="isFavorite(user)"
+            <UserCard v-for="user in users" :key="user.id" :user="user" :isFavorite="isFavorite(user)"
                 @delete="deleteUser(user)" @toggle-favorite="toggleFavorite(user)" />
         </div>
         <p v-else>Nenhum usuário favorito adicionado.</p>
@@ -19,7 +19,8 @@ export default {
     },
     data() {
         return {
-            users: []
+            users: [],
+            favoriteUser: ''
         };
     },
     methods: {
@@ -30,7 +31,7 @@ export default {
             user.favorite = !user.favorite;
         },
         isFavorite(user) {
-            return user.favorite
+            return user.username == this.favoriteUser
         },
         sortUsers() {
             this.users.sort((a, b) => a.name.localeCompare(b.name));
@@ -40,6 +41,7 @@ export default {
         axios.get('http://localhost:3333/users/')
             .then(response => {
                 this.users = response.data.users;
+                this.favoriteUser = response.data.favorite_user
             })
             .catch(error => {
                 console.error('Não foi possível consultar a lista de usuários', error);
