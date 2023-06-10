@@ -12,6 +12,7 @@ import { ref } from 'vue';
 import SearchBar from './components/SearchBar.vue';
 import UserList from './components/UserList.vue';
 
+
 export default {
   components: {
     SearchBar,
@@ -43,28 +44,28 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 .app {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  background-color: #DBDFEA;
+  background-color: #FFE6C7;
+  font-family: 'Open Sans', sans-serif;
 }
 
-
-.search-bar {
-  padding-top: 50px;
-}
 
 h1 {
   margin-top: 0;
   font-size: 70px;
   margin-bottom: 0;
+  color: #454545;
 }
 
 h2 {
   margin-top: 0;
   font-size: 20px;
-  padding-bottom: 20px;
+  color: #454545;
 }
 </style>

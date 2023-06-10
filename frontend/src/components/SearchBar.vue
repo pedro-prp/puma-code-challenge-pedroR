@@ -1,8 +1,7 @@
 <template>
     <div class="search-bar">
         <input type="text" v-model="searchQuery" placeholder="Digite o username do GitHub" />
-        <button @click="openConfirmationModal">Adicionar</button>
-
+        <button id="search-button" @click="openConfirmationModal">Buscar</button>
         <div v-if="showModal" class="modal">
             <div class="modal-content">
                 <h2>Confirmação</h2>
@@ -70,7 +69,17 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
+    width: 100%;
+    height: 50px;
+    padding: 20px 0 20px 0px;
+    background-color: #FF6000;
+}
+
+.separator {
+    height: 10px;
+    background-color: black;
+    margin: 20px 0;
 }
 
 .modal {
@@ -113,5 +122,34 @@ export default {
     gap: 10px;
     margin-top: 10px;
 }
+
+#search-button {
+    padding: 0 3rem;
+    height: 30px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    background: #FFA559;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-shadow: -2px 4px 16px #FFA559;
+}
+
+#search-button:hover {
+    background: #fff;
+    color: #FFA559;
+}
 </style>
-  
+
+
+
+
+
+        
+
+

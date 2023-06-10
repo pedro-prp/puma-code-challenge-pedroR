@@ -52,8 +52,8 @@ export default {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 25px;
-    background-color: #ACB1D6;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #FFA559;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-info {
@@ -70,10 +70,12 @@ export default {
 
 .card-info h3 {
     margin-top: 10px;
+    color: #454545;
 }
 
 .card-info p {
     margin-bottom: 10px;
+    color: #454545;
 }
 
 .buttons {
