@@ -10,31 +10,39 @@
 </template>
   
 <script>
+import axios from 'axios';
 import UserCard from './userCard.vue';
 
 export default {
     components: {
         UserCard
     },
-    props: {
-        users: {
-            type: Array,
-            required: true
-        }
+    data() {
+        return {
+            users: []
+        };
     },
     methods: {
         deleteUser(user) {
-            this.$emit('delete', user);
+            this.users = this.users.filter((u) => u.id !== user.id);
         },
         toggleFavorite(user) {
-            this.$emit('toggle-favorite', user);
+            user.favorite = !user.favorite;
         },
         isFavorite(user) {
-
         },
         sortUsers() {
             this.users.sort((a, b) => a.name.localeCompare(b.name));
         }
+    },
+    created() {
+        axios.get('http://localhost:3333/users/')
+            .then(response => {
+                this.users = response.data.users;
+            })
+            .catch(error => {
+                console.error('Não foi possível consultar a lista de usuários', error);
+            });
     }
 }
 </script>

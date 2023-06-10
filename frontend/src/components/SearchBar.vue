@@ -51,10 +51,11 @@ export default {
                 console.error('Erro ao buscar o usuário', error);
             }
         },
-        confirmUser() {
-            this.$emit('add-user', this.user);
+        async confirmUser() {
+            axios.post('http://localhost:3333/users/', this.user)
             this.closeModal();
             this.searchQuery = '';
+            window.location.reload()
         },
         closeModal() {
             this.showModal = false;
