@@ -4,6 +4,7 @@ const favoriteController = require('../controller/favoriteUser')
 
 const favoriteRouter = Router()
 
-favoriteRouter.get('/', favoriteController.index)
+favoriteRouter.get('/users/', favoriteController.index)
+favoriteRouter.post('/users/', favoriteController.create)
 
 module.exports = favoriteRouter
