@@ -54,10 +54,20 @@ export default {
             }
         },
         async confirmUser() {
-            axios.post('http://localhost:3333/users/', this.user)
-            this.closeModal();
-            this.searchQuery = '';
-            window.location.reload()
+            axios.post('http://localhost:3333/users', this.user)
+                .then(response => {
+                    this.closeModal();
+                    this.searchQuery = '';
+                    window.location.reload()
+                })
+                .catch(error => {
+                    if (error.response && error.response.status === 400) {
+                        this.closeModal();
+                        alert('Usuário já foi inserido anteriormente');
+                    } else {
+                        console.error('Erro ao confirmar o usuário:', error);
+                    }
+                });
         },
         closeModal() {
             this.showModal = false;
