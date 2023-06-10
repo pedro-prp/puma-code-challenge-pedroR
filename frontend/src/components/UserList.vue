@@ -1,6 +1,6 @@
 <template>
     <div class="user-list">
-        <button @click="sortUsers">Ordenar por nome</button>
+        <button @click="sortUsers"><img src="../assets/images/order.png" alt=""></button>
         <div v-if="users.length > 0" class="grid">
             <UserCard v-for="user in users" :key="user.id" :user="user" :is-favorite="isFavorite(user)"
                 @delete="deleteUser(user)" @toggle-favorite="toggleFavorite(user)" />
@@ -51,17 +51,29 @@ export default {
 <style scoped>
 .user-list {
     margin-top: 20px;
+    width: 80%;
+    background-color: #1A1423;
+    border-radius: 5px;
+    box-shadow: -2px 4px 16px #6f6d6d;
+}
+
+button {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+img {
+    width: 30px;
 }
 
 .grid {
-    /*
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 20px;
-    */
     display: flex;
     gap: 30px;
-    justify-content: space-between;
+    justify-content: center;
+    background-color: #1A1423;
+    border-radius: 5px;
+    padding-bottom: 40px;
+    padding-top: 20px;
 }
 
 p {

@@ -1,7 +1,10 @@
 <template>
     <div class="search-bar">
-        <input type="text" v-model="searchQuery" placeholder="Digite o username do GitHub" />
-        <button id="search-button" @click="openConfirmationModal">Buscar</button>
+        <p>Busque por um usuário Github</p>
+        <div class="search-field">
+            <input type="text" v-model="searchQuery" placeholder="Digite o username do GitHub" />
+            <button id="search-button" @click="openConfirmationModal">Buscar</button>
+        </div>
         <div v-if="showModal" class="modal">
             <div class="modal-content">
                 <h2>Confirmação</h2>
@@ -69,7 +72,7 @@ input {
     border-radius: 5px;
     height: 20px;
     width: 180px;
-    border: solid #FFA559;
+    border: solid #774C60;
     font-family: 'Open Sans', sans-serif;
     text-align: center;
 }
@@ -83,14 +86,22 @@ input:hover {
 }
 
 .search-bar {
+    text-align: center;
+    gap: 20px;
+    width: 80%;
+    padding: 0px 0 20px 0px;
+    background-color: #1A1423;
+    border-radius: 5px;
+}
+
+.search-field {
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 100%;
-    height: 50px;
-    padding: 20px 0 20px 0px;
-    background-color: #FF6000;
+}
+
+p {
+    color: #fff;
 }
 
 .separator {
@@ -148,18 +159,18 @@ input:hover {
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif;
     cursor: pointer;
-    background: #FFA559;
+    background: #774C60;
     border: none;
     color: #fff;
     font-weight: bold;
     letter-spacing: 1px;
     border-radius: 10px;
-    box-shadow: -2px 4px 16px #FFA559;
+    box-shadow: -2px 4px 16px #774C60;
 }
 
 #search-button:hover {
     background: #fff;
-    color: #FFA559;
+    color: #774C60;
 }
 </style>
 

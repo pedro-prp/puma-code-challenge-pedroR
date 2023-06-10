@@ -51,8 +51,9 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  background-color: #FFE6C7;
   font-family: 'Open Sans', sans-serif;
+  border-radius: 10px;
+
 }
 
 
@@ -61,6 +62,7 @@ h1 {
   font-size: 70px;
   margin-bottom: 0;
   color: #454545;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h2 {

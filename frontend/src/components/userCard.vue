@@ -52,10 +52,9 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    background-color: #FFA559;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #a38191;
+
 }
 
 .card-info {
@@ -68,16 +67,17 @@ export default {
     width: 100px;
     height: 100px;
     border-radius: 100%;
+    border: solid #454545
 }
 
 .card-info h3 {
     margin-top: 10px;
-    color: #454545;
+    color: #E1F5F2;
 }
 
 .card-info p {
     margin-bottom: 10px;
-    color: #454545;
+    color: #E1F5F2;
 }
 
 .buttons {
@@ -96,20 +96,18 @@ export default {
     font-size: 12px;
     text-transform: uppercase;
     text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif, bold 700;
     cursor: pointer;
-    background: #454545;
+    background: #5A5D9D;
     border: none;
     color: #fff;
     font-weight: bold;
     letter-spacing: 1px;
-    border-radius: 10px;
-    box-shadow: -2px 4px 16px #454545;
+    border-radius: 5px;
 }
 
 #profile-button button {
-    box-shadow: -2px 4px 16px #454545;
-    background: #454545;
+    background: #5A5D9D;
 }
 
 #profile-button button:hover {
@@ -118,18 +116,16 @@ export default {
 }
 
 #delete-button {
-    background: #B70404;
-    box-shadow: -2px 4px 16px #B70404;
+    background: #B75D69;
 }
 
 #delete-button:hover {
     background: #fff;
-    color: #B70404;
+    color: #B75D69;
 }
 
 #favorite-button {
-    background: #FFE569;
-    box-shadow: -2px 4px 16px #FFE569;
+    background: #EAC435;
 }
 
 #favorite-button:hover {
