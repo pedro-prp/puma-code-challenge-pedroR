@@ -8,7 +8,6 @@
         <div v-if="showModal" class="modal">
             <div class="modal-content">
                 <h2>Confirmação</h2>
-                <p>Deseja adicionar o seguinte usuário à lista de favoritos?</p>
                 <div class="user-details">
                     <img :src="user.avatar_url" :alt="user.name" />
                     <div>
@@ -17,8 +16,8 @@
                     </div>
                 </div>
                 <div class="modal-buttons">
-                    <button @click="confirmUser">Confirmar</button>
-                    <button @click="closeModal">Cancelar</button>
+                    <button id="button-confirm" @click="confirmUser">Confirmar</button>
+                    <button id="button-cancel" @click="closeModal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -78,6 +77,62 @@ export default {
 </script>
   
 <style scoped>
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.user-details img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 30px 20px;
+}
+
+.modal-buttons button {
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#button-cancel {
+    background-color: #B75D69;
+}
+
+.modal-buttons button:hover {
+    background-color: #0D47A1;
+}
+
+
 input {
     border-radius: 5px;
     height: 20px;

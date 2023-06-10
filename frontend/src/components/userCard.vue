@@ -78,7 +78,7 @@ export default {
 
 .card-info p {
     margin-bottom: 10px;
-    color: #E1F5F2;
+    color: black;
 }
 
 .buttons {
